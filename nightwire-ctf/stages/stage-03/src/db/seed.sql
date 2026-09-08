@@ -1,8 +1,11 @@
+-- Fix MariaDB root authentication for the web server
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';
+FLUSH PRIVILEGES;
+
 CREATE DATABASE solace;
 USE solace;
 
 CREATE TABLE users (id INT, username VARCHAR(50), password_hash VARCHAR(32), role VARCHAR(20));
--- MD5 hash for 'qwerty' (a weak rockyou.txt password)
 INSERT INTO users VALUES (1, 'support', MD5('support123'), 'agent');
 INSERT INTO users VALUES (2, 'admin', 'd8578edf8458ce06fbc5bb76a58c5ca4', 'admin');
 
