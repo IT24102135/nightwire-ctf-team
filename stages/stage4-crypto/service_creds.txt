@@ -1,0 +1,2 @@
+user=svc_backup
+pass=training123
