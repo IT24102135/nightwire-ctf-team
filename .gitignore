@@ -32,3 +32,14 @@ Thumbs.db
 # Sensitive data
 secrets/
 *.secret
+
+# Stage 4 sensitive files
+stages/stage4-crypto/config_backup.ini
+stages/stage4-crypto/service_creds.txt
+stages/stage4-crypto/private.pem
+stages/stage4-crypto/.venv/
+
+# Stage 6 VM files
+stages/stage6-linux-vm/*.ova
+stages/stage6-linux-vm/*.vdi
+stages/stage6-linux-vm/*.vbox

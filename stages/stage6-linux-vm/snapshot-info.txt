@@ -1,0 +1,14 @@
+NIGHTWIRE Stage 6 - Baseline Snapshot Info
+
+VM Name: nightwire-final
+Snapshot Name: baseline
+Snapshot UUID: 7e600a6b-7b97-4af8-937f-e4897fe3b9e2
+
+Created with:
+  VBoxManage snapshot nightwire-final take baseline
+
+Verified with:
+  VBoxManage snapshot nightwire-final list
+
+Restore command:
+  VBoxManage snapshot nightwire-final restore baseline
