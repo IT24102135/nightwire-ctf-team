@@ -1,0 +1,4 @@
+NIGHTWIRE TRAINING HANDOFF
+
+The simulated incident has been traced.
+Final flag: NIGHTWIRE{packet_trail_complete}
