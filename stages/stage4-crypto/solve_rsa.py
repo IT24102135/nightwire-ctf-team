@@ -1,18 +1,13 @@
 #!/usr/bin/env python3
 """
 NIGHTWIRE Stage 4 - RSA Solver
-Demonstrates factoring a weak 512-bit RSA modulus.
+Demonstrates factoring a weak 512-bit RSA modulus
+using trial division for the small factor.
 """
 
 from pathlib import Path
-import sys
-
-try:
-    from Crypto.PublicKey import RSA
-    from Crypto.Util.number import long_to_bytes, inverse
-except ImportError:
-    print("[!] pycryptodome required: pip install pycryptodome")
-    sys.exit(1)
+from Crypto.PublicKey import RSA
+from Crypto.Util.number import long_to_bytes, inverse
 
 
 PUBKEY_PATH = "pubkey.pem"
@@ -26,17 +21,16 @@ def load_pubkey():
 
 def factor_weak_modulus(n):
     """
-    Factor a small RSA modulus using trial division for demonstration.
-    For a real 512-bit key, use RsaCtfTool or FactorDB.
+    Factor n by trial division.
+    Works because one of the primes is deliberately small.
     """
-    print(f"[*] Factoring modulus n = {n}")
-    for p in range(2, 10_000_000):
+    print(f"[*] Factoring n ({n.bit_length()} bits)...")
+    for p in range(2, 100_000_000):
         if n % p == 0:
             q = n // p
-            print(f"[+] Found factor p = {p}")
-            print(f"[+] Found factor q = {q}")
+            print(f"[+] Found small factor p = {p}")
             return p, q
-    raise ValueError("No factor found in range")
+    raise ValueError("No small factor found — key is not weak enough")
 
 
 def decrypt(ciphertext, p, q, e):
@@ -51,7 +45,9 @@ def main():
     key = load_pubkey()
     n = key.n
     e = key.e
-    print(f"[*] Loaded public key: n = {n}, e = {e}")
+    print(f"[*] Loaded public key")
+    print(f"    n bit length: {n.bit_length()}")
+    print(f"    e: {e}")
 
     with open(CIPHERTEXT_PATH, "rb") as f:
         ciphertext = int.from_bytes(f.read(), "big")
