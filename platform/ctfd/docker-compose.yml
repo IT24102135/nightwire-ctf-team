@@ -31,3 +31,47 @@ services:
   cache:
     image: redis:alpine
     restart: always
+
+  stage1-osint:
+    build:
+      context: C:/Users/Katana/Documents/GitHub/nightwire-ctf-team/nightwire-ctf/stages/stage-01
+    container_name: stage1-osint
+    restart: always
+
+  stage2-stego:
+    build:
+      context: C:/Users/Katana/Documents/GitHub/nightwire-ctf-team/nightwire-ctf/stages/stage-02
+    container_name: stage2-stego
+    restart: always
+
+  stage3-db:
+    image: mariadb:10.11
+    container_name: stage3-db
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_ROOT_HOST=%
+    volumes:
+      - C:/Users/Katana/Documents/GitHub/nightwire-ctf-team/nightwire-ctf/stages/stage-03/src/db/seed.sql:/docker-entrypoint-initdb.d/seed.sql
+
+  stage3-web:
+    build:
+      context: C:/Users/Katana/Documents/GitHub/nightwire-ctf-team/nightwire-ctf/stages/stage-03
+    container_name: stage3-web
+    restart: always
+    ports:
+      - "8081:80"
+    depends_on:
+      - stage3-db
+
+  stage4-crypto:
+    build:
+      context: C:/Users/Katana/Documents/GitHub/nightwire-ctf-team/stages/stage4-crypto
+    container_name: stage4-crypto
+    restart: always
+
+  stage5-forensics:
+    build:
+      context: C:/Users/Katana/Documents/GitHub/nightwire-ctf-team/stages/stage5-forensics
+    container_name: stage5-forensics
+    restart: always

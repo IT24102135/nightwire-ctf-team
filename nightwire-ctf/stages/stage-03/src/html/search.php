@@ -2,7 +2,7 @@
 // Disable fatal exceptions so players can see the raw SQL errors
 mysqli_report(MYSQLI_REPORT_OFF);
 
-$conn = new mysqli("127.0.0.1", "root", "root", "solace");
+$conn = new mysqli("stage3-db", "root", "root", "solace");
 
 if ($conn->connect_error) {
     die("DB Connection Error: " . $conn->connect_error);
