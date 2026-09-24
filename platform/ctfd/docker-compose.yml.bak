@@ -34,7 +34,7 @@ services:
 
   stage1-osint:
     build:
-      context: ../../nightwire-ctf/stages/stage-01
+      context: C:/Users/Katana/Documents/GitHub/nightwire-ctf-team/nightwire-ctf/stages/stage-01
     container_name: stage1-osint
     restart: always
     ports:
@@ -42,7 +42,7 @@ services:
 
   stage2-stego:
     build:
-      context: ../../nightwire-ctf/stages/stage-02
+      context: C:/Users/Katana/Documents/GitHub/nightwire-ctf-team/nightwire-ctf/stages/stage-02
     container_name: stage2-stego
     restart: always
     ports:
@@ -56,11 +56,11 @@ services:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_ROOT_HOST=%
     volumes:
-      - ../../nightwire-ctf/stages/stage-03/src/db/seed.sql:/docker-entrypoint-initdb.d/seed.sql
+      - C:/Users/Katana/Documents/GitHub/nightwire-ctf-team/nightwire-ctf/stages/stage-03/src/db/seed.sql:/docker-entrypoint-initdb.d/seed.sql
 
   stage3-web:
     build:
-      context: ../../nightwire-ctf/stages/stage-03
+      context: C:/Users/Katana/Documents/GitHub/nightwire-ctf-team/nightwire-ctf/stages/stage-03
     container_name: stage3-web
     restart: always
     ports:
@@ -70,7 +70,7 @@ services:
 
   stage4-crypto:
     build:
-      context: ../../stages/stage4-crypto
+      context: C:/Users/Katana/Documents/GitHub/nightwire-ctf-team/stages/stage4-crypto
     container_name: stage4-crypto
     restart: always
     ports:
@@ -78,7 +78,7 @@ services:
 
   stage5-forensics:
     build:
-      context: ../../stages/stage5-forensics
+      context: C:/Users/Katana/Documents/GitHub/nightwire-ctf-team/stages/stage5-forensics
     container_name: stage5-forensics
     restart: always
     ports:
