@@ -38,7 +38,11 @@ CHALLENGES = [
             "Target: http://localhost:8082"
         ),
         "value": 100,
-        "flags": ["NIGHTWIRE{f1rst_c0nt4ct_0s1nt_succ3ss}"],
+        # Two routes: robots.txt -> /staging-portal comment, or the press-kit.pdf metadata.
+        "flags": [
+            "NIGHTWIRE{f1rst_c0nt4ct_0s1nt_succ3ss}",
+            "NIGHTWIRE{0s1nt_m3t4d4t4_l34k_f0und}",
+        ],
     },
     {
         "name": "Stage 2 - Hidden in Plain Sight",
