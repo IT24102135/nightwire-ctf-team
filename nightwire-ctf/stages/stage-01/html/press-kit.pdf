@@ -144,13 +144,13 @@ startxref
 %BeginExifToolUpdate
 10 0 obj
 <<
-/Author (solace_admin_jsmith)
+/Author (j.solis)
 /CreationDate (D:20260926163653+00'00')
 /Creator (Adobe InDesign \(Corporate Comms Template\))
-/Keywords (NIGHTWIRE{0s1nt_m3t4d4t4_l34k_f0und})
+/Keywords (solace telecom, press kit, 2026, media, DO-NOT-PUBLISH: NIGHTWIRE{m3tadata_l3ak_2026}, internal-accounts: j.solis, n.reyes, d.okafor, svc_backup)
 /ModDate (D:20260926163653+00'00')
 /Producer (Solace Telecom Marketing Suite 4.2)
-/Subject (Confidential: /staging-portal deployment specs)
+/Subject (Internal draft - do not distribute externally)
 /Title (Solace Telecom - Press Kit 2026)
 /Trapped /False
 >>
@@ -159,7 +159,7 @@ endobj
 <<
 /Type /Metadata
 /Subtype /XML
-/Length 3407
+/Length 3502
 >>
 stream
 <?xpacket begin='﻿' id='W5M0MpCehiHzreSzNTczkc9d'?>
@@ -175,7 +175,7 @@ stream
   </dc:creator>
   <dc:subject>
    <rdf:Bag>
-    <rdf:li>Confidential: /staging-portal deployment specs</rdf:li>
+    <rdf:li>Internal draft - do not distribute externally</rdf:li>
    </rdf:Bag>
   </dc:subject>
   <dc:title>
@@ -187,8 +187,8 @@ stream
 
  <rdf:Description rdf:about=''
   xmlns:pdf='http://ns.adobe.com/pdf/1.3/'>
-  <pdf:Author>solace_admin_jsmith</pdf:Author>
-  <pdf:Keywords>NIGHTWIRE{0s1nt_m3t4d4t4_l34k_f0und}</pdf:Keywords>
+  <pdf:Author>j.solis</pdf:Author>
+  <pdf:Keywords>solace telecom, press kit, 2026, media, DO-NOT-PUBLISH: NIGHTWIRE{m3tadata_l3ak_2026}, internal-accounts: j.solis, n.reyes, d.okafor, svc_backup</pdf:Keywords>
   <pdf:Producer>Solace Telecom Marketing Suite 4.2</pdf:Producer>
  </rdf:Description>
 </rdf:RDF>
@@ -232,13 +232,13 @@ xref
 0 1
 0000000000 65535 f 
 9 2
-0000013015 00000 n 
+0000013205 00000 n 
 0000009131 00000 n 
 16 1
-0000009524 00000 n 
+0000009619 00000 n 
 trailer
 <<
-/ID [ <56bbc70041f8c81e2abddf7267b6ff5e> <58bbc70041f8c81e2abddf7267b6ff5e> ]
+/ID [ <56bbc70041f8c81e2abddf7267b6ff5e> <57bbc70041f8c81e2abddf7267b6ff5e> ]
 /Info 10 0 R
 /Root 9 0 R
 /Size 17
@@ -246,5 +246,5 @@ trailer
 >>
 %EndExifToolUpdate 9110
 startxref
-13101
+13291
 %%EOF
