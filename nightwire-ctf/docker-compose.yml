@@ -1,0 +1,14 @@
+services:
+  stage1:
+    build:
+      context: ./stages/stage-01
+      dockerfile: Dockerfile
+    ports:
+      - "8001:80"
+
+  stage4:
+    build:
+      context: ../stages/stage4-crypto
+      dockerfile: Dockerfile
+    ports:
+      - "8004:80"
