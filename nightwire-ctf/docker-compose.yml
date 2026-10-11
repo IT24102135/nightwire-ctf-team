@@ -1,10 +1,24 @@
 services:
   stage1:
     build:
-      context: ./stages/stage-01
+      context: ./nightwire-ctf/stages/stage-01
       dockerfile: Dockerfile
     ports:
       - "8001:80"
+
+  stage2:
+    build:
+      context: ./nightwire-ctf/stages/stage-02
+      dockerfile: Dockerfile
+    ports:
+      - "8002:80"
+
+  stage3:
+    build:
+      context: ./nightwire-ctf/stages/stage-03
+      dockerfile: Dockerfile
+    ports:
+      - "8003:80"
 
   stage4:
     build:
@@ -12,3 +26,17 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8004:80"
+
+  stage5:
+    build:
+      context: ../stages/stage5-forensics
+      dockerfile: Dockerfile
+    ports:
+      - "8005:80"
+
+  stage6:
+    build:
+      context: ../stages/stage6-linux-vm
+      dockerfile: Dockerfile
+    ports:
+      - "8006:80"
