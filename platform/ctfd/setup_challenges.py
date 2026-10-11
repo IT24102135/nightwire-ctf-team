@@ -28,6 +28,8 @@ HEADERS = {
     "Content-Type": "application/json",
 }
 
+HINT_COST = 5  # Points deducted per hint viewed (5% of typical challenge value)
+
 CHALLENGES = [
     {
         "name": "Stage 1 - First Contact",
@@ -43,6 +45,10 @@ CHALLENGES = [
             "NIGHTWIRE{f1rst_c0nt4ct_0s1nt_succ3ss}",
             "NIGHTWIRE{0s1nt_m3t4d4t4_l34k_f0und}",
         ],
+        "hints": [
+            "Check the site's robots.txt file for hidden paths and clues.",
+            "PDF files often contain metadata. Look for document properties and hidden info.",
+        ],
     },
     {
         "name": "Stage 2 - Hidden in Plain Sight",
@@ -54,6 +60,10 @@ CHALLENGES = [
         ),
         "value": 100,
         "flags": ["NIGHTWIRE{h1dd3n_1n_pl41n_s1ght}"],
+        "hints": [
+            "The flag is hidden in the image's pixel data. Not visible at first glance.",
+            "LSB (Least Significant Bit) steganography hides data in image channels.",
+        ],
     },
     {
         "name": "Stage 3 - Backdoor Portal",
@@ -65,6 +75,10 @@ CHALLENGES = [
         ),
         "value": 200,
         "flags": ["NIGHTWIRE{b4ckd00r_p0rt4l_sqli_m4st3r}"],
+        "hints": [
+            "Try injecting SQL syntax into the search parameter.",
+            "The classic payload ' OR '1'='1 might reveal more than expected.",
+        ],
     },
     {
         "name": "Stage 4 - Recovered Backups",
@@ -81,6 +95,10 @@ CHALLENGES = [
             "NIGHTWIRE{weak_rsa_factored}",
             "NIGHTWIRE{crypto_backup_recovered}",
         ],
+        "hints": [
+            "RSA is only secure if primes are large and random. Check for weak generation.",
+            "XOR encryption with a repeating key is vulnerable to frequency analysis.",
+        ],
     },
     {
         "name": "Stage 5 - Packet Trail",
@@ -92,6 +110,10 @@ CHALLENGES = [
         ),
         "value": 300,
         "flags": ["NIGHTWIRE{packet_trail_complete}"],
+        "hints": [
+            "DNS TXT records can be used to exfiltrate data. Check what was in the queries.",
+            "The subdomain labels in DNS queries might encode more than just domain names.",
+        ],
     },
     {
         "name": "Stage 6 - Root of Nightwire",
@@ -103,6 +125,10 @@ CHALLENGES = [
         ),
         "value": 400,
         "flags": ["NIGHTWIRE{r00t_0f_n1ghtw1r3_c4pst0n3}"],
+        "hints": [
+            "Check what commands the current user can run with elevated privileges.",
+            "The 'find' command with -exec can be a powerful privilege escalation vector.",
+        ],
     },
 ]
 
@@ -134,6 +160,19 @@ def create_challenge(chal):
         )
         fr.raise_for_status()
 
+    if "hints" in chal:
+        for hint_text in chal["hints"]:
+            hr = requests.post(
+                f"{BASE_URL}/api/v1/hints",
+                headers=HEADERS,
+                json={
+                    "challenge_id": chal_id,
+                    "content": hint_text,
+                    "cost": HINT_COST,
+                },
+            )
+            hr.raise_for_status()
+
     return chal_id
 
 
@@ -154,7 +193,9 @@ def main():
             print(f"SKIP  (already exists): {chal['name']}")
             continue
         chal_id = create_challenge(chal)
-        print(f"CREATED  [{chal_id}] {chal['name']}  ({len(chal['flags'])} flag(s), {chal['value']} pts)")
+        hint_count = len(chal.get("hints", []))
+        hint_text = f", {hint_count} hint(s) @ {HINT_COST} pts each" if hint_count > 0 else ""
+        print(f"CREATED  [{chal_id}] {chal['name']}  ({len(chal['flags'])} flag(s), {chal['value']} pts{hint_text})")
 
     print("\nDone. Refresh http://localhost:8000/challenges to see them.")
 
